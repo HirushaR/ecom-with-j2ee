@@ -1,14 +1,13 @@
 package com.example.eshop.repository;
 
 import com.example.eshop.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
-@Service
+@Repository
 public interface UserRepository extends JpaRepository<User,Integer> {
 
+    User findByEmail(String email);
+    User findByFirstname(String fnam);
 
-    Optional<User> findByUserName(String username);
 }

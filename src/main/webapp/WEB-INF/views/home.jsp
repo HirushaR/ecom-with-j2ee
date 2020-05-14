@@ -20,7 +20,7 @@
 
 
     <!-- Bootstrap -->
-<link type="text/css" rel="stylesheet" href="<c:url value="/css/bootstrap.min.css"> </c:url> " />
+    <link type="text/css" rel="stylesheet" href="<c:url value="/css/bootstrap.min.css"> </c:url> " />
 
     <!-- Slick -->
     <link type="text/css" rel="stylesheet" href="<c:url value="/css/slick.css" > </c:url>" />
@@ -132,39 +132,39 @@
                 <div class="row">
                     <div id="product-slick-1" class="product-slick">
                         <!-- Product Single -->
-                    <c:forEach items="${products}" var="product">
-                        <div class="product product-single">
-                            <div class="product-thumb">
-                                <div class="product-label">
-                                    <span>New</span>
-                                    <span class="sale">-20%</span>
+                        <c:forEach items="${products}" var="product">
+                            <div class="product product-single">
+                                <div class="product-thumb">
+                                    <div class="product-label">
+                                        <span>New</span>
+                                        <span class="sale">-20%</span>
+                                    </div>
+                                    <ul class="product-countdown">
+                                        <li><span>00 H</span></li>
+                                        <li><span>00 M</span></li>
+                                        <li><span>00 S</span></li>
+                                    </ul>
+                                    <button class="main-btn quick-view" onclick="window.location.replace('/viewproduct/${product.id}')"><i class="fa fa-search-plus"></i> Quick view</button>
+                                    <img src="<c:url value="/img/${product.image}"/>"  style="height:20rem;" alt="">
                                 </div>
-                                <ul class="product-countdown">
-                                    <li><span>00 H</span></li>
-                                    <li><span>00 M</span></li>
-                                    <li><span>00 S</span></li>
-                                </ul>
-                                <button class="main-btn quick-view" onclick="window.location.replace('/viewproduct/${product.id}')"><i class="fa fa-search-plus"></i> Quick view</button>
-                                <img src="<c:url value="/img/${product.image}"/>"  style="height:20rem;" alt="">
+                                <div class="product-body">
+                                    <h3 class="product-price">${product.price/100*80} <del class="product-old-price">${product.price}</del></h3>
+                                    <div class="product-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                    </div>
+                                    <h2 class="product-name"><a href="<c:url value="/product/${product.id}"></c:url>">${product.name}</a></h2>
+                                    <div class="product-btns">
+                                        <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+                                        <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
+                                        <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="product-body">
-                                <h3 class="product-price">${product.price/100*80} <del class="product-old-price">${product.price}</del></h3>
-                                <div class="product-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o empty"></i>
-                                </div>
-                                <h2 class="product-name"><a href="<c:url value="/product/${product.id}"></c:url>">${product.name}</a></h2>
-                                <div class="product-btns">
-                                    <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-                                    <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
-                                    <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </c:forEach>
+                        </c:forEach>
                         <!-- /Product Single -->
 
 
@@ -236,38 +236,38 @@
                 </div>
             </div>
             <!-- /banner -->
-        <c:forEach items="${phones}" var="phone">
-            <!-- Product Single -->
-            <div class="col-md-3 col-sm-6 col-xs-6">
-                <div class="product product-single">
-                    <div class="product-thumb">
-                        <div class="product-label">
-                            <span>New</span>
-                            <span class="sale">-20%</span>
+            <c:forEach items="${phones}" var="phone">
+                <!-- Product Single -->
+                <div class="col-md-3 col-sm-6 col-xs-6">
+                    <div class="product product-single">
+                        <div class="product-thumb">
+                            <div class="product-label">
+                                <span>New</span>
+                                <span class="sale">-20%</span>
+                            </div>
+                            <button class="main-btn quick-view" onclick="window.location.replace('/viewproduct/${phone.id}')"><i class="fa fa-search-plus"></i> Quick view</button>
+                            <img src="/img/${phone.image}" alt="">
                         </div>
-                        <button class="main-btn quick-view" onclick="window.location.replace('/viewproduct/${phone.id}')"><i class="fa fa-search-plus"></i> Quick view</button>
-                        <img src="./img/${phone.image}" alt="">
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-price">${phone.price*20/100} <del class="product-old-price">${phone.price}</del></h3>
-                        <div class="product-rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-o empty"></i>
-                        </div>
-                        <h2 class="product-name"><a href="#">${phone.name}</a></h2>
-                        <div class="product-btns">
-                            <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-                            <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
-                            <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+                        <div class="product-body">
+                            <h3 class="product-price">${phone.price*20/100} <del class="product-old-price">${phone.price}</del></h3>
+                            <div class="product-rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o empty"></i>
+                            </div>
+                            <h2 class="product-name"><a href="#">${phone.name}</a></h2>
+                            <div class="product-btns">
+                                <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+                                <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
+                                <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- /Product Single -->
-        </c:forEach>
+                <!-- /Product Single -->
+            </c:forEach>
         </div>
         <div class="row">
             <!-- banner -->
@@ -291,7 +291,7 @@
                                 <span class="sale">-20%</span>
                             </div>
                             <button class="main-btn quick-view" onclick="window.location.replace('/viewproduct/${laptop.id}')" ><i class="fa fa-search-plus"></i> Quick view</button>
-                            <img src="./img/${laptop.image}" alt="">
+                            <img src="/img/${laptop.image}" alt="">
                         </div>
                         <div class="product-body">
                             <h3 class="product-price">${laptop.price*20/100} <del class="product-old-price">${laptop.price}</del></h3>
@@ -336,7 +336,7 @@
                                 <span class="sale">-20%</span>
                             </div>
                             <button class="main-btn quick-view" onclick="window.location.replace('/viewproduct/${ard.id}')"><i class="fa fa-search-plus"></i> Quick view</button>
-                            <img src="./img/${ard.image}" alt="">
+                            <img src="/img/${ard.image}" alt="">
                         </div>
                         <div class="product-body">
                             <h3 class="product-price">${ard.price*20/100} <del class="product-old-price">${ard.price}</del></h3>
@@ -385,7 +385,7 @@
             <!-- banner -->
             <div class="col-md-4 col-sm-6">
                 <a class="banner banner-1" href="#">
-                    <img src="<c:url value="/img/banner11.jpg"/>"  alt="">
+                    <img src="<c:url value="/img/banner11.jpg"/>" alt="">
                     <div class="banner-caption text-center">
                         <h2 class="white-color">NEW COLLECTION</h2>
                     </div>
@@ -396,7 +396,7 @@
             <!-- banner -->
             <div class="col-md-4 col-sm-6">
                 <a class="banner banner-1" href="#">
-                    <img src="<c:url value="/img/banner12.jpg"/>"  alt="">
+                    <img src="<c:url value="/img/banner12.jpg"/>" alt="">
                     <div class="banner-caption text-center">
                         <h2 class="white-color">NEW COLLECTION</h2>
                     </div>

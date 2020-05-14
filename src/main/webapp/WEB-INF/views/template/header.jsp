@@ -18,8 +18,8 @@
             <div class="pull-left">
                 <!-- Logo -->
                 <div class="header-logo">
-                    <a class="logo" href="<c:url value="/" />">
-                        <img src="<c:url value="/img/logo.png" />" alt="">
+                    <a class="logo" href="<c:url value="/static" />">
+                        <img src="<c:url value="/resources/img/logo.png" />" alt="">
                     </a>
                 </div>
                 <!-- /Logo -->
@@ -48,14 +48,13 @@
                             </div>
                             <strong class="text-uppercase">My Account <i class="fa fa-caret-down"></i></strong>
                         </div>
-                        <a href="#" class="text-uppercase">Login</a> / <a href="#" class="text-uppercase">Join</a>
+                        <a href="#" class="text-uppercase">${userName}</a>
                         <ul class="custom-menu">
                             <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
                             <li><a href="#"><i class="fa fa-heart-o"></i> My Wishlist</a></li>
                             <li><a href="#"><i class="fa fa-exchange"></i> Compare</a></li>
                             <li><a href="#"><i class="fa fa-check"></i> Checkout</a></li>
-                            <li><a href="#"><i class="fa fa-unlock-alt"></i> ${userId}</a></li>
-                            <li><a href="#"><i class="fa fa-user-plus"></i> Create An Account</a></li>
+                            <li><a href="#"><i class="fa fa-user-plus"></i> <a href="/logout">Log Out</a></a></li>
                         </ul>
                     </li>
                     <!-- /Account -->
@@ -76,7 +75,7 @@
                                 <div class="shopping-cart-list">
                                     <div class="product product-widget">
                                         <div class="product-thumb">
-                                            <img src="./img/thumb-product01.jpg" alt="">
+                                            <img src="../../../../resources/resources/img/thumb-product01.jpg" alt="">
                                         </div>
                                         <div class="product-body">
                                             <h3 class="product-price">$32.50 <span class="qty">x3</span></h3>
@@ -86,7 +85,7 @@
                                     </div>
                                     <div class="product product-widget">
                                         <div class="product-thumb">
-                                            <img src="./img/thumb-product01.jpg" alt="">
+                                            <img src="../../../../resources/resources/img/thumb-product01.jpg" alt="">
                                         </div>
                                         <div class="product-body">
                                             <h3 class="product-price">$32.50 <span class="qty">x3</span></h3>
@@ -171,7 +170,7 @@
                                 <div class="col-md-12">
                                     <hr>
                                     <a class="banner banner-1" href="#">
-                                        <img src="./img/banner05.jpg" alt="">
+                                        <img src="../../../../resources/resources/img/banner05.jpg" alt="">
                                         <div class="banner-caption text-center">
                                             <h2 class="white-color">NEW COLLECTION</h2>
                                             <h3 class="white-color font-weak">HOT DEAL</h3>
@@ -230,7 +229,7 @@
                                 </div>
                                 <div class="col-md-4 hidden-sm hidden-xs">
                                     <a class="banner banner-2" href="#">
-                                        <img src="./img/banner04.jpg" alt="">
+                                        <img src="../../../../resources/resources/img/banner04.jpg" alt="">
                                         <div class="banner-caption">
                                             <h3 class="white-color">NEW<br>COLLECTION</h3>
                                         </div>
@@ -323,7 +322,7 @@
             <div class="menu-nav">
                 <span class="menu-header">Menu <i class="fa fa-bars"></i></span>
                 <ul class="menu-list">
-                    <li><a href="<c:url value="/" />">Home</a></li>
+                    <li><a href="<c:url value="/home" />">Home</a></li>
                     <li><a href="<c:url value="/products" /> ">Shop</a></li>
                     <li class="dropdown mega-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Women <i class="fa fa-caret-down"></i></a>
                         <div class="custom-menu">
@@ -368,7 +367,7 @@
                                 <div class="col-md-12">
                                     <hr>
                                     <a class="banner banner-1" href="#">
-                                        <img src="./img/banner05.jpg" alt="">
+                                        <img src="../../../../resources/resources/img/banner05.jpg" alt="">
                                         <div class="banner-caption text-center">
                                             <h2 class="white-color">NEW COLLECTION</h2>
                                             <h3 class="white-color font-weak">HOT DEAL</h3>
@@ -384,7 +383,7 @@
                                 <div class="col-md-3">
                                     <div class="hidden-sm hidden-xs">
                                         <a class="banner banner-1" href="#">
-                                            <img src="./img/banner06.jpg" alt="">
+                                            <img src="../../../../resources/resources/img/banner06.jpg" alt="">
                                             <div class="banner-caption text-center">
                                                 <h3 class="white-color text-uppercase">Women’s</h3>
                                             </div>
@@ -404,7 +403,7 @@
                                 <div class="col-md-3">
                                     <div class="hidden-sm hidden-xs">
                                         <a class="banner banner-1" href="#">
-                                            <img src="./img/banner07.jpg" alt="">
+                                            <img src="../../../../resources/resources/img/banner07.jpg" alt="">
                                             <div class="banner-caption text-center">
                                                 <h3 class="white-color text-uppercase">Men’s</h3>
                                             </div>
@@ -424,7 +423,7 @@
                                 <div class="col-md-3">
                                     <div class="hidden-sm hidden-xs">
                                         <a class="banner banner-1" href="#">
-                                            <img src="./img/banner08.jpg" alt="">
+                                            <img src="../../../../resources/resources/img/banner08.jpg" alt="">
                                             <div class="banner-caption text-center">
                                                 <h3 class="white-color text-uppercase">Accessories</h3>
                                             </div>
@@ -444,7 +443,7 @@
                                 <div class="col-md-3">
                                     <div class="hidden-sm hidden-xs">
                                         <a class="banner banner-1" href="#">
-                                            <img src="./img/banner09.jpg" alt="">
+                                            <img src="../../../../resources/resources/img/banner09.jpg" alt="">
                                             <div class="banner-caption text-center">
                                                 <h3 class="white-color text-uppercase">Bags</h3>
                                             </div>
@@ -467,7 +466,7 @@
                     <li><a href="#">Sales</a></li>
                     <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Pages <i class="fa fa-caret-down"></i></a>
                         <ul class="custom-menu">
-                            <li> <a href="<c:url value="/" />">Home</a></li>
+                            <li> <a href="<c:url value="/home" />">Home</a></li>
                             <li> <a href="<c:url value="/products" />"> Products</a></li>
                             <li><a href="product-page.html">Product Details</a></li>
                             <li><a href="checkout.html">Checkout</a></li>

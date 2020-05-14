@@ -173,7 +173,17 @@
 										<div class="product-btns">
 											<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
 											<button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
-											<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+											<c:choose>
+												<c:when test="${product.quantity != 0}">
+													<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+													<br />
+												</c:when>
+												<c:otherwise>
+													<button class="primary-btn add-to-cart" disabled><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+													<br />
+												</c:otherwise>
+											</c:choose>
+
 										</div>
 									</div>
 								</div>

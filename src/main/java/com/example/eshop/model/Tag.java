@@ -1,7 +1,11 @@
 package com.example.eshop.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -11,8 +15,8 @@ public class Tag {
     @GeneratedValue( strategy = GenerationType.AUTO)
     private int id;
     private String name;
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "tags")
-    private Set<Product> products = new HashSet<>();
+    @ManyToMany( cascade = CascadeType.ALL, mappedBy = "tags")
+    private List<Product> products = new ArrayList<>();
 
     public Tag()
     {
@@ -39,11 +43,11 @@ public class Tag {
         this.name = name;
     }
 
-    public Set<Product> getProducts() {
+    public List<Product> getProducts() {
         return products;
     }
 
-    public void setProducts(Set<Product> products) {
+    public void setProducts(List<Product> products) {
         this.products = products;
     }
 }

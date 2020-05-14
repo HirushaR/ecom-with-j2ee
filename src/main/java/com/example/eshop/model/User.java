@@ -1,6 +1,7 @@
 package com.example.eshop.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
@@ -8,10 +9,25 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String userName;
+
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "firstname")
+    private String firstname;
+
+    @Column(name = "lastname")
+    private String lastname;
+
+    @Column(name = "password")
     private String password;
-    private Boolean active;
-    private String roles;
+
+    @Column(name = "active")
+    private int active;
+
+    @ManyToMany(cascade=CascadeType.ALL)
+    @JoinTable(name="user_role", joinColumns=@JoinColumn(name="user_id"), inverseJoinColumns=@JoinColumn(name="role_id"))
+    private Set<Role> roles;
 
     public int getId() {
         return id;
@@ -21,12 +37,28 @@ public class User {
         this.id = id;
     }
 
-    public String getUser_name() {
-        return userName;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUser_name(String userName) {
-        this.userName = userName;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public String getPassword() {
@@ -37,19 +69,19 @@ public class User {
         this.password = password;
     }
 
-    public Boolean getActive() {
+    public int getActive() {
         return active;
     }
 
-    public void setActive(Boolean active) {
+    public void setActive(int active) {
         this.active = active;
     }
 
-    public String getRoles() {
+    public Set<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(String roles) {
+    public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
 }

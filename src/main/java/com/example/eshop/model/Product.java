@@ -1,9 +1,9 @@
 package com.example.eshop.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "product")
@@ -19,11 +19,12 @@ public class Product {
     private double price;
     private Date created_date = new Date();
     private int quantity;
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany( cascade = CascadeType.ALL)
     @JoinTable(name = "prod_tag",
-     joinColumns = {@JoinColumn(name = "product_id")},
-     inverseJoinColumns = {@JoinColumn(name = "tag_id")})
-    private Set<Tag> tags = new HashSet<>();
+     joinColumns = {@JoinColumn(name = "product_id",updatable = false)},
+     inverseJoinColumns = {@JoinColumn(name = "tag_id", updatable = false)})
+    //private Set<Tag> tags = new HashSet<>();
+    private List<Tag> tags = new ArrayList<>();
 
     public Product(String name, String description, String details) {
         this.name = name;
@@ -44,11 +45,11 @@ public class Product {
     }
 
 
-    public Set<Tag> getTags() {
+    public List<Tag> getTags() {
         return tags;
     }
 
-    public void setTags(Set<Tag> tags) {
+    public void setTags(List<Tag> tags) {
         this.tags = tags;
     }
 
