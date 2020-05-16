@@ -38,6 +38,8 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+
+
 </head>
 
 <body>
@@ -150,7 +152,7 @@
 
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <div class="product-reviews">
+                                        <div class="product-reviews" id="productreviews">
                                             <c:forEach items="${reviews}" var="review" >
                                             <div class="single-review">
                                                 <div class="review-heading">
@@ -187,12 +189,13 @@
                                     <div class="col-md-6">
                                         <h4 class="text-uppercase">Write Your Review.</h4>
                                         <p>Your email address will not be published.</p>
-                                        <form class="review-form" action="/reveiw" method="post">
+                                        <form class="review-form" id="reviewform" action="/reveiw" method="post">
                                             <div class="form-group">
+                                                <input type="hidden" name="userid" value="${user.id}">
                                                 <input type="hidden" name="productid" value="${product.id}">
                                                 <input class="input" type="text" name="body" placeholder="Your Review" />
                                             </div>
-                                            <button class="primary-btn">Submit</button>
+                                            <button class="primary-btn" id="reviews">Submit</button>
                                         </form>
                                     </div>
                                 </div>

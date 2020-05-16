@@ -40,7 +40,6 @@
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
 </head>
 
@@ -75,16 +74,16 @@
                             <h3 class="title">Billing Details</h3>
                         </div>
                         <div class="form-group">
-                            <input class="input" type="text" name="first-name" placeholder="${fname}">
+                            <input class="input" type="text" name="first-name" placeholder="${user.firstname}">
                         </div>
                         <div class="form-group">
-                            <input class="input" type="text" name="last-name" placeholder="${lname}">
+                            <input class="input" type="text" name="last-name" placeholder="${user.lastname}">
                         </div>
                         <div class="form-group">
-                            <input class="input" type="email" name="email" placeholder="${email}">
+                            <input class="input" type="email" name="email" placeholder="${user.email}">
                         </div>
                         <div class="form-group">
-                            <input class="input" type="text" name="Degree Program" placeholder="${role}">
+                            <input class="input" type="text" name="Degree Program" placeholder="Degree">
                         </div>
                         <div class="form-group">
                             <input class="input" type="text" name="address" placeholder="Address">
@@ -105,7 +104,8 @@
                                 <div class="caption">
                                     <p>Converting to seller account You will have a privilege to sell your item though E-shop
                                     <p>
-                                        <input class="input" type="email" name="email" placeholder="Enter Your email">
+<%--                                        <input class="input" type="email" name="email" placeholder="Enter Your email">--%>
+                                        <a href="/seller/${user.id}" class="convert" >Convert to seller account</a>
                                 </div>
                             </div>
                         </div>

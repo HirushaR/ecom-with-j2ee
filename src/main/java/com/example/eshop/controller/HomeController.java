@@ -16,6 +16,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -38,11 +39,11 @@ public class HomeController {
     private UserRepository userRepository;
 
 
-    public String auth()
+    public User auth()
     {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
-        return user.getFirstname();
+        return user;
     }
 
 //
@@ -67,32 +68,21 @@ public class HomeController {
         request.setAttribute("mode","MODE_ADMIN");
         return "index";
     }
-//    @GetMapping("/home/home")
-//    public String getLatecedProdct(Model model)
-//    {
-//        List<Product> productList = productRepository.findAll();
-//        List<Product> phoneList = productRepository.findTop3ByCategory("phone");
-//        List<Product> LaptopList = productRepository.findTop3ByCategory("laptop");
-//        List<Product> ardunoList = productRepository.findTop3ByCategory("a");
-//        model.addAttribute("ards", ardunoList);
-//        model.addAttribute("laptops", LaptopList);
-//        model.addAttribute("phones", phoneList);
-//        model.addAttribute("products", productList);
-//        return "home/home";
-//    }
 
-    @GetMapping("/viewproduct/{productid}")
-    public String viewProductfromID(@PathVariable int productid, Model model) throws IOException {
 
+    @GetMapping("/viewproduct")
+    public String viewProductfromID(Model model,HttpServletRequest request) throws IOException {
+
+        int productid = Integer.parseInt(request.getParameter("id"));
 
         Optional<Product> product = productRepository.findById(productid);
         List<ProductReveiw> productReveiw = productReviewRepository.findByProductid(productid);
         int count_of_review= productReviewRepository.countByProductid(productid);
 
-        String name = auth();
+       // String name = auth().getFirstname();
         model.addAttribute("reviews_count",count_of_review);
         model.addAttribute("reviews",productReveiw);
-        model.addAttribute("userName", name);
+        model.addAttribute("user", auth());
         model.addAttribute(product.get());
         return "viewProduct";
     }
@@ -101,33 +91,51 @@ public class HomeController {
     public String viewProduct(Model model) throws IOException {
         List<Product> productList = productRepository.findAll();
         List<Tag> tagList = tagRepository.findAll();
-        String name = auth();
-        model.addAttribute("userName", name);
+       // String name = auth();
+        model.addAttribute("user", auth());
         model.addAttribute("tags",tagList);
         model.addAttribute("products",productList);
         return "products";
     }
 
-    @PostMapping("/reveiw")
-    public String getReview(Model model, @ModelAttribute ProductReveiw newproductReveiw)
+//    @PostMapping("/reveiw")
+//    public String getReview(Model model, @ModelAttribute ProductReveiw newproductReveiw)
+//    {
+//        String body =newproductReveiw.getBody();
+//        int pid = newproductReveiw.getProductid();
+//        User user = userRepository.findByFirstname(auth().getFirstname());
+//        int user_id = user.getId();
+//        Date dt = new Date();
+//
+//        ProductReveiw svproductReveiw = new ProductReveiw();
+//        svproductReveiw.setBody(body);
+//        svproductReveiw.setCreate_date(dt);
+//        svproductReveiw.setProductid(pid);
+//        svproductReveiw.setUserid(user_id);
+//        productReviewRepository.save(svproductReveiw);
+//
+//
+//       // productReviewRepository.save(productReveiw);
+//        return "product";
+//    }
+
+    @PostMapping("reveiw")
+    public String createreview(HttpServletRequest request)
     {
-        String body =newproductReveiw.getBody();
-        int pid = newproductReveiw.getProductid();
-        User user = userRepository.findByFirstname(auth());
-        int user_id = user.getId();
+
+        ProductReveiw productReveiw = new ProductReveiw();
         Date dt = new Date();
+        int pid = Integer.parseInt(request.getParameter("productid"));
+        int uid = Integer.parseInt(request.getParameter("userid"));
+        productReveiw.setUserid(uid);
+        productReveiw.setProductid(pid);
+        productReveiw.setBody(request.getParameter("body").trim());
+        productReveiw.setCreate_date(dt);
+        productReviewRepository.save(productReveiw);
 
-        ProductReveiw svproductReveiw = new ProductReveiw();
-        svproductReveiw.setBody(body);
-        svproductReveiw.setCreate_date(dt);
-        svproductReveiw.setProductid(pid);
-        svproductReveiw.setUserid(user_id);
-        productReviewRepository.save(svproductReveiw);
-
-
-       // productReviewRepository.save(productReveiw);
-        return "products";
+        return "viewProduct";
     }
+
 
 
 

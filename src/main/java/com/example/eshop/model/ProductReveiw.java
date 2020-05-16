@@ -1,7 +1,6 @@
 package com.example.eshop.model;
 
 import javax.persistence.*;
-import javax.xml.crypto.Data;
 import java.util.Date;
 
 @Entity

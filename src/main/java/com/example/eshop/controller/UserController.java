@@ -1,9 +1,12 @@
 package com.example.eshop.controller;
 
 import com.example.eshop.model.Product;
+import com.example.eshop.model.Role;
 import com.example.eshop.model.User;
 import com.example.eshop.repository.ProductRepository;
+import com.example.eshop.repository.RoleRepository;
 import com.example.eshop.repository.TagRepository;
+import com.example.eshop.repository.UserRepository;
 import com.example.eshop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -12,24 +15,32 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class UserController {
 
 
-
+    @Autowired
+    RoleRepository roleRepository;
     @Autowired
     private UserService userService;
     @Autowired
     private ProductRepository productRepository;
     @Autowired
     private TagRepository tagRepository;
+    @Autowired
+    private UserRepository userRepository;
 
 
     @RequestMapping(value= {"/", "/login"}, method=RequestMethod.GET)
@@ -100,7 +111,7 @@ public class UserController {
         model.addAttribute("products", productList);
 
         //model.addObject("userName", user.getFirstname());
-        model.addAttribute("userName", user.getFirstname());
+        model.addAttribute("user", user);
         //model.setViewName("home/home");
         return "home";
     }
@@ -113,6 +124,26 @@ public class UserController {
         return model;
     }
 
+    @GetMapping("/profile")
+    public String getUser(Model model, HttpServletRequest request)
+    {
+        int id = Integer.parseInt(request.getParameter("id"));
+//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//        User user = userService.findUserByEmail(auth.getName());
+        User user = userRepository.findById(id);
+        model.addAttribute("user",user);
+        return "profile";
+    }
+
+    @GetMapping("/seller/{id}")
+    public String convertToSeller(Model model, @PathVariable int id)
+    {
+        User user = userRepository.findById(id);
+        Role userRole = roleRepository.findByRole("SELLER");
+        user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+        userRepository.save(user);
+        return "home";
+    }
 
 
 
