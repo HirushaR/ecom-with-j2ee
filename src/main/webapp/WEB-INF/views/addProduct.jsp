@@ -8,18 +8,9 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
-    <title>E-CORNER</title>
-
-
-    <!-- Bootstrap -->
+    <title>Bootstrap - Input multiple tags example using Tag Manager Jquery Plugin</title>
     <link type="text/css" rel="stylesheet" href="<c:url value="/css/bootstrap.min.css"> </c:url> " />
 
     <!-- Slick -->
@@ -35,102 +26,90 @@
     <!-- Custom stlylesheet -->
     <link type="text/css" rel="stylesheet" href="<c:url value="/css/style.css" > </c:url> "/>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]> -->
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/tagmanager/3.0.2/tagmanager.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tagmanager/3.0.2/tagmanager.min.js"></script>
 </head>
-
 <body>
-<!-- HEADER -->
+
 <%@include file="template/header.jsp"%>
-<!-- /NAVIGATION -->
 
-<!-- /NAVIGATION -->
+<%--<form id="checkout-form" class="clearfix">--%>
+<%--    <div class="form-group">--%>
+<%--        <label>Name:</label>--%>
+<%--        <input type="text" name="name" class="form-control" >--%>
+<%--    </div>--%>
+<%--    <div class="form-group">--%>
+<%--        <label>Add Tags:</label><br/>--%>
+<%--        <input type="text" name="tags" placeholder="Tags" class="tm-input form-control tm-input-info"/>--%>
+<%--    </div>--%>
+<%--    <div class="form-group">--%>
+<%--        <label>Details:</label>--%>
+<%--        <textarea class="form-control"></textarea>--%>
+<%--    </div>--%>
+<%--    <div class="form-group">--%>
+<%--        <button class="btn btn-success">Submit</button>--%>
+<%--    </div>--%>
+<%--</form>--%>
 
-<!-- BREADCRUMB -->
-<div id="breadcrumb">
-    <div class="container">
-        <ul class="breadcrumb">
-            <li><a href="#">Home</a></li>
-            <li class="active">Profile</li>
-        </ul>
-    </div>
-</div>
-<!-- /BREADCRUMB -->
-
-<!-- section -->
 <div class="section">
     <!-- container -->
     <div class="container">
         <!-- row -->
         <div class="row">
-            <form id="checkout-form" class="clearfix">
+            <form id="checkout-form" class="clearfix" method="post" action="/createproduct">
                 <div class="col-md-6">
                     <div class="billing-details" id="userprofile">
                         <div class="section-title">
                             <h3 class="title">Billing Details</h3>
                         </div>
                         <div class="form-group">
-                            <input class="input" type="text" name="first-name" placeholder="${user.firstname}">
+                            <input class="input" type="text" name="name" placeholder="title">
                         </div>
                         <div class="form-group">
-                            <input class="input" type="text" name="last-name" placeholder="${user.lastname}">
+                            <textarea class="text-area" name="description" rows="4" cols="50">
+                                Add Description
+                            </textarea>
                         </div>
                         <div class="form-group">
-                            <input class="input" type="email" name="email" placeholder="${user.email}">
+                            <textarea class="text-area" name="details" rows="4" cols="50">
+                                Add details
+                            </textarea>
                         </div>
                         <div class="form-group">
-                            <input class="input" type="text" name="Degree Program" placeholder="Degree">
-                        </div>
-                        <div class="form-group">
-                            <input class="input" type="text" name="address" placeholder="Address">
-                        </div>
-                        <div class="form-group">
-                            <input class="input" type="text" name="city" placeholder="City">
-                        </div>
-                        <div class="form-group">
-                            <input class="input" type="text" name="zip-code" placeholder="ZIP Code">
-                        </div>
-                        <div class="form-group">
-                            <input class="input" type="tel" name="tel" placeholder="Telephone">
-                        </div>
+                            <label for="cars">Choose a car:</label>
+                            <select id="cars" name="category">
+                                <c:forEach items="${products}" var="product">
+                                    <option value="${product.category}">${product.category}</option>
+                                </c:forEach>
 
-                        <c:if test="${roles=='USER'}">
+
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input class="input" type="file" name="image" placeholder="image">
+                        </div>
+                        <div class="form-group">
+                            <input class="input" type="number" name="price" placeholder="price">
+                        </div>
+                        <div class="form-group">
+                            <input class="input" type="number" name="quantity" placeholder="quantity">
+                        </div>
+                        <div class="form-group">
                             <div class="form-group">
-                                <div class="input-checkbox">
-                                    <input type="checkbox" id="register">
-                                    <label class="font-weak" for="register">Convert to Seller Account?</label>
-                                    <div class="caption">
-                                        <p>Converting to seller account You will have a privilege to sell your item though E-shop
-                                        <p>
-                                                <%--                                        <input class="input" type="email" name="email" placeholder="Enter Your email">--%>
-                                            <a href="/seller/${user.id}" class="convert" >Convert to seller account</a>
-                                    </div>
-                                </div>
+                                <label>Add Tags:</label><br/>
+                                <input type="text" name="tags" placeholder="Tags" class="tm-input form-control tm-input-info"/>
                             </div>
-                        </c:if>
-                        <c:if test="${roles.equals('SELLER')}">
-
-                            <div class="form-group">
-                                <div class="input-checkbox">
-                                    <input type="checkbox" id="acproduct">
-                                    <label class="font-weak" for="acproduct">Do you wanna Add a Product</label>
-                                    <div class="caption">
-                                        <p>Converting to seller account You will have a privilege to sell your item though E-shop
-                                        <p>
-                                        <a href="/seller/addproduct"><i class="fa fa-plus"></i> Add Product </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </c:if>
-
+                        </div>
+                        <div class="form-group">
+                            <input class="btn btn-sm" type="submit" name="submit" value="Submit">
+                        </div>
                     </div>
 
                 </div>
-
+            </form>
 
                 <div class="col-md-6">
                     <div class="shiping-methods">
@@ -186,21 +165,18 @@
                     </div>
                 </div>
 
-            </form>
+
         </div>
         <!-- /row -->
     </div>
     <!-- /container -->
 </div>
-<!-- /section -->
 
-<!-- FOOTER -->
 
-<!-- /FOOTER -->
-
-<!-- jQuery Plugins -->
+<script type="text/javascript">
+    $(".tm-input").tagsManager();
+</script>
 
 <%@include file="template/footer.jsp"%>
 </body>
-
 </html>

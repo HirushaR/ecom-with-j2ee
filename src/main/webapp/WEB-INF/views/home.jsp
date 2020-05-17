@@ -1,3 +1,4 @@
+<%@ page import="org.springframework.security.config.annotation.web.builders.HttpSecurity" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -144,7 +145,7 @@
                                         <li><span>00 M</span></li>
                                         <li><span>00 S</span></li>
                                     </ul>
-                                    <button class="main-btn quick-view" onclick="window.location.replace('/viewproduct?id=${product.id}')"><i class="fa fa-search-plus"></i> Quick view</button>
+                                    <button class="main-btn quick-view" onclick="window.location.replace('/viewproduct/${product.id}')"><i class="fa fa-search-plus"></i> Quick view</button>
                                     <img src="<c:url value="/img/${product.image}"/>"  style="height:20rem;" alt="">
                                 </div>
                                 <div class="product-body">
@@ -156,7 +157,7 @@
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star-o empty"></i>
                                     </div>
-                                    <h2 class="product-name"><a href="<c:url value="/viewproduct?id=${product.id}"></c:url>">${product.name}</a></h2>
+                                    <h2 class="product-name"><a href="<c:url value="/viewproduct/{product.id}"></c:url>">${product.name}</a></h2>
                                     <div class="product-btns">
                                         <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
                                         <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
@@ -257,7 +258,7 @@
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star-o empty"></i>
                             </div>
-                            <h2 class="product-name"><a href="#">${phone.name}</a></h2>
+                            <h2 class="product-name"><a href="viewproduct/${phone.id}">${phone.name}</a></h2>
                             <div class="product-btns">
                                 <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
                                 <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
@@ -302,7 +303,7 @@
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star-o empty"></i>
                             </div>
-                            <h2 class="product-name"><a href="#">${laptop.name}</a></h2>
+                            <h2 class="product-name"><a href="/viewproduct/${laptop.id}">${laptop.name}</a></h2>
                             <div class="product-btns">
                                 <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
                                 <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>

@@ -76,29 +76,13 @@
 							<c:forEach items="${tags}" var="tag">
 							<li><a href="#" style="color:#FFF; background-color:#8A2454;">${tag.name}</a></li>
 							</c:forEach>
+
 						</ul>
 
 						<button class="primary-btn">Clear All</button>
 					</div>
-					<!-- /aside widget -->
 
-					<!-- aside widget -->
-					<div class="aside">
-						<h3 class="aside-title">Filter by Price</h3>
-						<div id="price-slider"></div>
-					</div>
-					<!-- aside widget -->
 
-					<!-- aside widget -->
-					<div class="aside">
-						<h3 class="aside-title">Filter by Brand</h3>
-						<ul class="list-links">
-							<li><a href="#">Nike</a></li>
-							<li><a href="#">Adidas</a></li>
-							<li><a href="#">Polo</a></li>
-							<li><a href="#">Lacost</a></li>
-						</ul>
-					</div>
 
 				</div>
 				<!-- /ASIDE -->
@@ -114,10 +98,11 @@
 							</div>
 							<div class="sort-filter">
 								<span class="text-uppercase">Sort By:</span>
-								<select class="input">
-										<option value="0">Position</option>
-										<option value="0">Price</option>
-										<option value="0">Rating</option>
+								<select class="input" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+									<c:forEach items="${categories}" var="category">
+									<option value="/products/${category.id}">${category.name}</option>
+								  </c:forEach>
+
 									</select>
 								<a href="#" class="main-btn icon-btn"><i class="fa fa-arrow-down"></i></a>
 							</div>

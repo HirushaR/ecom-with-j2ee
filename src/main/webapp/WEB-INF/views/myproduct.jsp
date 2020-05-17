@@ -42,10 +42,6 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <%
-        int tot = 0;
-    %>
-
 </head>
 
 <body>
@@ -75,46 +71,30 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <c:set var="tot" scope="application" value="${0}"></c:set>
+                        <c:forEach items="${products}" var="product">
 
-
-                        <c:forEach items="${carts}" var="cart">
-
-                        <tr>
-                            <td class="thumb"><img src="/img/${cart.product.image}" alt=""></td>
-                            <td class="details">
-                                <a href="#">${cart.product.name}</a>
-                                <ul>
-                                    <li><span>Size: XL</span></li>
-                                    <li><span>Color: Camelot</span></li>
-                                </ul>
-                            </td>
-                            <td class="price text-center"><strong>${cart.product.price}</strong><br><del class="font-weak"><small>${cart.product.price}</small></del></td>
-                            <td class="total text-center">${cart.quantity}</td>
-                            <td class="total text-center"><strong class="primary-color">${cart.product.price * cart.quantity}</strong></td>
-                            <c:set var="tot" scope="application" value="${tot + cart.product.price * cart.quantity}" />
-                            <td class="text-right"><button class="main-btn icon-btn"><i class="fa fa-close"></i></button></td>
-                        </tr>
+                            <tr>
+                                <td class="thumb"><img src="/img/${product.image}" alt=""></td>
+                                <td class="details">
+                                    <a href="#">${product.name}</a>
+                                    <ul>
+                                        <li><span>Size: XL</span></li>
+                                        <li><span>Color: Camelot</span></li>
+                                    </ul>
+                                </td>
+                                <td class="price text-center"><strong>${product.price}</strong><br><del class="font-weak"><small>${product.price}</small></del></td>
+                                <td class="qty text-center"><input class="input" type="number" value="${product.quantity}"></td>
+                                <td class="total text-center"><strong class="primary-color">${product.price}</strong></td>
+                                <td class="text-right"><button class="main-btn icon-btn"><i class="fa fa-close"></i></button></td>
+                            </tr>
                         </c:forEach>
 
                         </tbody>
-                        <tfoot>
-                        <tr>
-                            <th class="empty" colspan="3"></th>
-                            <th>SHIPING</th>
-                            <td colspan="2">Free Shipping</td>
-                        </tr>
-                        <tr>
-                            <th class="empty" colspan="3"></th>
-                            <th>TOTAL</th>
-                            <th colspan="2" class="total"><c:out value="${tot}"/></th>
-                        </tr>
-                        </tfoot>
+
                     </table>
                     <div class="pull-right">
-                        <button class="primary-btn">Place Order</button>
+                        <button class="primary-btn" onclick="window.location.replace('/seller/addproduct')">Add a another</button>
                     </div>
-
                 </div>
 
             </div>

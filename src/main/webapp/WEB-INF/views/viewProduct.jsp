@@ -117,12 +117,16 @@
 
                             <c:choose>
                                 <c:when test="${product.quantity != 0}">
+
+                                    <form action="/addcartproduct" method="POST">
                                     <div class="qty-input">
                                         <span class="text-uppercase">QTY: </span>
-                                        <input class="input" type="number">
+                                        <input class="input" type="number" name="quantity">
                                     </div>
-                                    <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+                                        <input type="hidden" name="productid" value="${product.id}">
+                                    <button type="submit" class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
                                     <br />
+                                    </form>
                                 </c:when>
                                 <c:otherwise>
                                     <div class="primary-btn add-to-cart" ><i class="fa fa-shopping-cart"></i> Out of Stock</div>

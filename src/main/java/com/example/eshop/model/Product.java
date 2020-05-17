@@ -1,5 +1,6 @@
 package com.example.eshop.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -14,7 +15,6 @@ public class Product {
     private String name;
     private String description;
     private String details;
-    private String category;
     private String image;
     private double price;
     private Date created_date = new Date();
@@ -23,8 +23,40 @@ public class Product {
     @JoinTable(name = "prod_tag",
      joinColumns = {@JoinColumn(name = "product_id",updatable = false)},
      inverseJoinColumns = {@JoinColumn(name = "tag_id", updatable = false)})
-    //private Set<Tag> tags = new HashSet<>();
-    private List<Tag> tags = new ArrayList<>();
+    private Set<Tag> tags = new HashSet<>();
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
+    @JsonIgnore
+    private User user;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "category_id", nullable = false)
+    @JsonIgnore
+    private Category category;
+
+
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+//    private Tag tags;
+
+    public Category getCategory() {
+        return category;
+    }
+//
+
+    public Set<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(Set<Tag> tags) {
+        this.tags = tags;
+    }
+
+
+
 
     public Product(String name, String description, String details) {
         this.name = name;
@@ -36,22 +68,13 @@ public class Product {
     {}
 
 
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-
-    public List<Tag> getTags() {
-        return tags;
-    }
-
-    public void setTags(List<Tag> tags) {
-        this.tags = tags;
-    }
+//    public List<Tag> getTags() {
+//        return tags;
+//    }
+//
+//    public void setTags(List<Tag> tags) {
+//        this.tags = tags;
+//    }
 
     public int getId() {
         return id;
@@ -115,5 +138,13 @@ public class Product {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

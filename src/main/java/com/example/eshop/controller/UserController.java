@@ -1,12 +1,7 @@
 package com.example.eshop.controller;
 
-import com.example.eshop.model.Product;
-import com.example.eshop.model.Role;
-import com.example.eshop.model.User;
-import com.example.eshop.repository.ProductRepository;
-import com.example.eshop.repository.RoleRepository;
-import com.example.eshop.repository.TagRepository;
-import com.example.eshop.repository.UserRepository;
+import com.example.eshop.model.*;
+import com.example.eshop.repository.*;
 import com.example.eshop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -20,15 +15,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class UserController {
+
 
 
     @Autowired
@@ -41,24 +35,57 @@ public class UserController {
     private TagRepository tagRepository;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private CategoryRepository categoryRepository;
+    @Autowired
+    private CartProductRepository cartProductRepository;
+    @Autowired
+    private CartRepository cartRepository;
+
+    public User auth()
+    {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        return user;
+    }
+    public String getRole()
+    {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+
+        String role =  userRepository.findUserRole(user.getId());
+        return role;
+    }
+    public List<Category> getcategory()
+    {
+        List<Category> category = categoryRepository.findAll();
+        return category;
+
+    }
+
+
+
+
+    public List<CartProduct> cartDetilsForNav()
+    {
+        Cart cart = cartRepository.findByUser(auth());
+        List<CartProduct> product = cartProductRepository.findByCart(cart);
+        return product;
+    }
 
 
     @RequestMapping(value= {"/", "/login"}, method=RequestMethod.GET)
-    public ModelAndView login() {
-        ModelAndView model = new ModelAndView();
+    public String login(Model model) {
 
-        model.setViewName("user/login");
-        return model;
+        return "user/login";
     }
 
     @RequestMapping(value= {"/signup"}, method=RequestMethod.GET)
-    public ModelAndView signup() {
-        ModelAndView model = new ModelAndView();
-        User user = new User();
-        model.addObject("user", user);
-        model.setViewName("user/signup");
+    public String signup(Model model) {
 
-        return model;
+        User user = new User();
+        model.addAttribute("user", user);
+        return "user/signup";
     }
 
     @RequestMapping(value= {"/signup"}, method=RequestMethod.POST)
@@ -75,24 +102,15 @@ public class UserController {
             userService.saveUser(user);
             model.addObject("msg", "User has been registered successfully!");
             model.addObject("user", new User());
+            Cart cart = new Cart();
+            cart.setUser(user);
             model.setViewName("user/signup");
         }
 
         return model;
     }
 
-//    @RequestMapping(value= {"/home/home"}, method=RequestMethod.GET)
-//    public ModelAndView home() {
-//        ModelAndView model = new ModelAndView();
-//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//        User user = userService.findUserByEmail(auth.getName());
-//
-//        model.addObject("userName", user.getFirstname());
-//
-//
-//        model.setViewName("home/home");
-//        return model;
-//    }
+
 
     //@RequestMapping(value= {"/home/home"}, method=RequestMethod.GET)
     @GetMapping("/home")
@@ -102,17 +120,26 @@ public class UserController {
         User user = userService.findUserByEmail(auth.getName());
 
         List<Product> productList = productRepository.findAll();
-        List<Product> phoneList = productRepository.findTop3ByCategory("phone");
-        List<Product> LaptopList = productRepository.findTop3ByCategory("laptop");
-        List<Product> ardunoList = productRepository.findTop3ByCategory("a");
+        Category category1 = categoryRepository.findById(1);
+        Category category2 = categoryRepository.findById(2);
+        Category category3 = categoryRepository.findById(3);
+        List<Product> phoneList = productRepository.findTop3ByCategory(category1);
+        List<Product> LaptopList = productRepository.findTop3ByCategory(category2);
+        List<Product> ardunoList = productRepository.findTop3ByCategory(category3);
         model.addAttribute("ards", ardunoList);
         model.addAttribute("laptops", LaptopList);
         model.addAttribute("phones", phoneList);
         model.addAttribute("products", productList);
-
+        model.addAttribute("roles",getRole());
+        model.addAttribute("carts", cartDetilsForNav());
         //model.addObject("userName", user.getFirstname());
         model.addAttribute("user", user);
+        //model.addAttribute("category", getcategory());
         //model.setViewName("home/home");
+        String role =  userRepository.findUserRole(user.getId());
+        model.addAttribute("roles", role);
+        model.addAttribute("categories",getcategory());
+
         return "home";
     }
 
@@ -124,24 +151,31 @@ public class UserController {
         return model;
     }
 
-    @GetMapping("/profile")
-    public String getUser(Model model, HttpServletRequest request)
+    @GetMapping("/profile/{id}")
+    public String getUser(Model model,@PathVariable int id)
     {
-        int id = Integer.parseInt(request.getParameter("id"));
-//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//        User user = userService.findUserByEmail(auth.getName());
+
         User user = userRepository.findById(id);
         model.addAttribute("user",user);
+        model.addAttribute("carts", cartDetilsForNav());
+        model.addAttribute("roles",getRole());
+        model.addAttribute("user", auth());
+        model.addAttribute("categories",getcategory());
         return "profile";
     }
 
     @GetMapping("/seller/{id}")
     public String convertToSeller(Model model, @PathVariable int id)
     {
+
         User user = userRepository.findById(id);
         Role userRole = roleRepository.findByRole("SELLER");
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+        model.addAttribute("roles",getRole());
         userRepository.save(user);
+        model.addAttribute("carts", cartDetilsForNav());
+        model.addAttribute("user", auth());
+        model.addAttribute("categories",getcategory());
         return "home";
     }
 
