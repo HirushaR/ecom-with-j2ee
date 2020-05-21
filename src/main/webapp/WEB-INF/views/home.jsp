@@ -60,9 +60,9 @@
             <div id="home-slick">
                 <!-- banner -->
                 <div class="banner banner-1">
-                    <img src="<c:url value="/img/banner01.jpg"/>" alt="">
+                    <img src="<c:url value="/img/lap.png"/>" alt="">
                     <div class="banner-caption text-center">
-                        <h1>Bags sale</h1>
+                        <h1>Lap Top sale </h1>
                         <h3 class="white-color font-weak">Up to 50% Discount</h3>
                         <button class="primary-btn">Shop Now</button>
                     </div>
@@ -71,9 +71,9 @@
 
                 <!-- banner -->
                 <div class="banner banner-1">
-                    <img src="<c:url value="/img/banner02.jpg"/>" alt="">
+                    <img src="<c:url value="/img/phone.jpg"/>" alt="">
                     <div class="banner-caption">
-                        <h1 class="primary-color">HOT DEAL<br><span class="white-color font-weak">Up to 50% OFF</span></h1>
+                        <h1 class="primary-color">HOT DEAL FOR MOBILE<br><span class="white-color font-weak">Up to 50% OFF</span></h1>
                         <button class="primary-btn">Shop Now</button>
                     </div>
                 </div>
@@ -186,9 +186,9 @@
                     <!-- banner -->
                     <div class="col-md-4 col-sm-6">
                         <a class="banner banner-1" href="#">
-                            <img src="<c:url value="/img/banner10.jpg"/>" alt="">
+                            <img src="<c:url value="/img/lap.png"/>" alt="">
                             <div class="banner-caption text-center">
-                                <h2 class="white-color">NEW COLLECTION</h2>
+                                <h2 class="white-color">NEW LAP TOP COLLECTION</h2>
                             </div>
                         </a>
                     </div>
@@ -197,9 +197,9 @@
                     <!-- banner -->
                     <div class="col-md-4 col-sm-6">
                         <a class="banner banner-1" href="#">
-                            <img src="<c:url value="/img/banner11.jpg"/>" alt="">
+                            <img src="<c:url value="/img/phone.jpg"/>" alt="">
                             <div class="banner-caption text-center">
-                                <h2 class="white-color">NEW COLLECTION</h2>
+                                <h2 class="white-color">NEW PHONE COLLECTION</h2>
                             </div>
                         </a>
                     </div>
@@ -208,7 +208,7 @@
                     <!-- banner -->
                     <div class="col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-3">
                         <a class="banner banner-1" href="#">
-                            <img src="<c:url value="/img/banner12.jpg"/>" alt="">
+                            <img src="<c:url value="/img/speaker.jpg"/>" alt="">
                             <div class="banner-caption text-center">
                                 <h2 class="white-color">NEW COLLECTION</h2>
                             </div>
@@ -229,9 +229,9 @@
             <!-- banner -->
             <div class="col-md-3 col-sm-6 col-xs-6">
                 <div class="banner banner-2">
-                    <img src="/img/banner13.jpg" alt="">
+                    <img src="/img/phone.jpg" alt="">
                     <div class="banner-caption">
-                        <h2 class="white-color">NEW<br>COLLECTION</h2>
+                        <h2 class="white-color">PHONE<br>COLLECTION</h2>
                         <button class="primary-btn">Shop Now</button>
                     </div>
                 </div>
@@ -274,9 +274,9 @@
             <!-- banner -->
             <div class="col-md-3 col-sm-6 col-xs-6">
                 <div class="banner banner-2">
-                    <img src="/img/banner13.jpg" alt="">
+                    <img src="/img/lap.png" alt="">
                     <div class="banner-caption">
-                        <h2 class="white-color">NEW<br>COLLECTION</h2>
+                        <h2 class="white-color">LAP TOP<br>COLLECTION</h2>
                         <button class="primary-btn">Shop Now</button>
                     </div>
                 </div>
@@ -319,7 +319,7 @@
             <!-- banner -->
             <div class="col-md-3 col-sm-6 col-xs-6">
                 <div class="banner banner-2">
-                    <img src="/img/banner13.jpg" alt="">
+                    <img src="/img/speaker.jpg" alt="">
                     <div class="banner-caption">
                         <h2 class="white-color">NEW<br>COLLECTION</h2>
                         <button class="primary-btn">Shop Now</button>

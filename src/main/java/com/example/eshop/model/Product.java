@@ -19,6 +19,7 @@ public class Product {
     private double price;
     private Date created_date = new Date();
     private int quantity;
+
     @ManyToMany( cascade = CascadeType.ALL)
     @JoinTable(name = "prod_tag",
      joinColumns = {@JoinColumn(name = "product_id",updatable = false)},

@@ -99,6 +99,7 @@ public class HomeController {
 
     @GetMapping("/products")
     public String viewProduct(Model model) throws IOException {
+
         List<Product> productList = productRepository.findAll();
         List<Tag> tagList = tagRepository.findAll();
 
@@ -140,9 +141,7 @@ public class HomeController {
         model.addAttribute("carts", cartDetilsForNav());
         model.addAttribute("user", auth());
         model.addAttribute("categories",getcategory());
-
-
-
+        //return to addProduct jsp page
         return "addProduct";
     }
 
@@ -151,18 +150,13 @@ public class HomeController {
     public String createPdocuct(Model model, Product product, Tag tag,Category category)
     {
 
-
-//        Product product = new Product();
-//        Tag tag = tagRepository.findById(5);
         User user = userRepository.findById(19);
         Date dt = new Date();
         model.addAttribute("roles",getRole());
-//        Tag tg1 = tagRepository.findById(5);
-//        Tag tg2 = tagRepository.findById(6);
+
         Set<Tag> tg = new HashSet<Tag>();
         tg.add(tag);
-//        tg.add(tg1);
-//        tg.add(tg2);
+
 
         product.setName(product.getName());
         product.setDescription(product.getDescription());
