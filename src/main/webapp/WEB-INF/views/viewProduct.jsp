@@ -83,7 +83,7 @@
                             <span class="sale">-20%</span>
                         </div>
                         <h2 class="product-name">${product.name}</h2>
-                        <h3 class="product-price">${product.price}<del class="product-old-price">${product.price}</del></h3>
+                        <h3 class="product-price">${product.price*80/100}<del class="product-old-price">${product.price}</del></h3>
                         <div>
                             <div class="product-rating">
                                 <i class="fa fa-star"></i>
@@ -92,26 +92,11 @@
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star-o empty"></i>
                             </div>
-                            <a href="#">3 Review(s) / Add Review</a>
+                            <a href="#">${reviews_count}/ Add Review</a>
                         </div>
                         <p><strong>Availability:</strong> ${product.quantity}</p>
                         <p><strong>Brand:</strong> E-SHOP</p>
                         <p>${product.description}</p>
-                        <div class="product-options">
-                            <ul class="size-option">
-                                <li><span class="text-uppercase">Size:</span></li>
-                                <li class="active"><a href="#">S</a></li>
-                                <li><a href="#">XL</a></li>
-                                <li><a href="#">SL</a></li>
-                            </ul>
-                            <ul class="color-option">
-                                <li><span class="text-uppercase">Color:</span></li>
-                                <li class="active"><a href="#" style="background-color:#475984;"></a></li>
-                                <li><a href="#" style="background-color:#8A2454;"></a></li>
-                                <li><a href="#" style="background-color:#BF6989;"></a></li>
-                                <li><a href="#" style="background-color:#9A54D8;"></a></li>
-                            </ul>
-                        </div>
 
                         <div class="product-btns">
 
@@ -184,8 +169,6 @@
 
                                             <ul class="reviews-pages">
                                                 <li class="active">1</li>
-                                                <li><a href="#">2</a></li>
-                                                <li><a href="#">3</a></li>
                                                 <li><a href="#"><i class="fa fa-caret-right"></i></a></li>
                                             </ul>
                                         </div>

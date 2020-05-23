@@ -119,7 +119,7 @@
             <!-- banner -->
             <div class="col-md-3 col-sm-6 col-xs-6">
                 <div class="banner banner-2">
-                    <img src="<c:url value="/img/banner14.jpg"/>" alt="">
+                    <img src="<c:url value="/img/laptopbanner.jpg"/>" alt="">
                     <div class="banner-caption">
                         <h2 class="white-color">NEW<br>COLLECTION</h2>
                         <button class="primary-btn">Shop Now</button>

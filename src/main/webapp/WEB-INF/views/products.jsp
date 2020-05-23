@@ -119,8 +119,6 @@
 							<ul class="store-pages">
 								<li><span class="text-uppercase">Page:</span></li>
 								<li class="active">1</li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
 								<li><a href="#"><i class="fa fa-caret-right"></i></a></li>
 							</ul>
 						</div>
@@ -143,10 +141,10 @@
 											<span class="sale">-20%</span>
 										</div>
 										<button class="main-btn quick-view" onclick="window.location.replace('/viewproduct/${product.id}')"><i class="fa fa-search-plus"></i> Quick view</button>
-										<img src="/img/${product.image}" alt="">
+										<img src="/img/${product.image}"  style="height:20rem;" alt="">
 									</div>
 									<div class="product-body">
-										<h3 class="product-price">${product.price}<del class="product-old-price">${product.price}</del></h3>
+										<h3 class="product-price">${product.price*80/100}<del class="product-old-price">${product.price}</del></h3>
 										<div class="product-rating">
 											<i class="fa fa-star"></i>
 											<i class="fa fa-star"></i>
@@ -198,8 +196,6 @@
 							<ul class="store-pages">
 								<li><span class="text-uppercase">Page:</span></li>
 								<li class="active">1</li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
 								<li><a href="#"><i class="fa fa-caret-right"></i></a></li>
 							</ul>
 						</div>

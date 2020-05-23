@@ -23,7 +23,7 @@
             <div class="pull-left">
                 <!-- Logo -->
                 <div class="header-logo">
-                    <a class="logo" href="<c:url value="/" />">
+                    <a class="logo" href="<c:url value="/home" />">
                         <img src="<c:url value="/img/logo.png" />" alt="">
                     </a>
                 </div>
@@ -60,7 +60,7 @@
                             </c:if>
 
                             <li><a href="/cart"><i class="fa fa-check"></i> Cart</a></li>
-                            <li><a href="#"><i class="fa fa-user-plus"></i> <a href="/logout">Log Out</a></a></li>
+                            <li><a href="/logout">Log Out</a></a></li>
                         </ul>
                     </li>
                     <c:set var="tot" scope="application" value="${0}"></c:set>

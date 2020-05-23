@@ -14,23 +14,93 @@
 </head>
 
 <body>
-<div class="container">
-    <div class="alert alert-danger" role="alert" th:if="${param.error}">
-        The email or password is incorrect!
+
+<div style="padding-top: 5rem"></div>
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <h2>Login for the Eshop</h2>
+        <hr>
     </div>
-    <form  action="<c:url value='/login'/>" method="post" >
-        <h1 class="h3 mb-3 font-weight-normal">Sign in</h1>
-        <label for="inputEmail" class="sr-only">Email</label>
-        <input type="email" id="email" name="email" class="form-control" placeholder="Email" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="remember-me" /> Remember me
-            </label>
+</div>
+<div class="container">
+    <c:if test="${param.error}">
+        <div class="alert alert-danger" role="alert" th:if="${param.error}">
+            The email or password is incorrect!
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        <div class="margin-top20 text-center"> Don't have an account? <a th:href="@{/signup}">Create an account</a></div>
+    </c:if>
+
+    <form  action="<c:url value='/login'/>" method="post" >
+<%--        <h1 class="h3 mb-3 font-weight-normal">Sign in</h1>--%>
+<%--        <label for="inputEmail" class="sr-only">Email</label>--%>
+<%--        <input type="email" id="email" name="email" class="form-control" placeholder="Email" required autofocus>--%>
+<%--        <label for="inputPassword" class="sr-only">Password</label>--%>
+<%--        <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>--%>
+<%--        <div class="checkbox mb-3">--%>
+<%--            <label>--%>
+<%--                <input type="checkbox" name="remember-me" /> Remember me--%>
+<%--            </label>--%>
+<%--        </div>--%>
+
+
+    <div class="row">
+        <div class="col-md-3 field-label-responsive">
+            <label for="email">Email</label>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+                    <input type="text" name="email" class="form-control" id="email"
+                           placeholder="username@jackrutorial.com" required autofocus>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-3 field-label-responsive">
+            <label for="password">Password</label>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+                    <input type="password" name="password" class="form-control" id="password"
+                           placeholder="password" required autofocus>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3 field-label-responsive">
+            <label for="password"></label>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+                    <label>
+                        <input type="checkbox" name="remember-me" /> Remember me
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <button type="submit" class="btn btn-success"><i class="fa fa-user-plus"></i> Login</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <a href="/signup">Don't have an Account?Register Here</a>
+        </div>
+    </div>
+
     </form>
 </div>
 </body>

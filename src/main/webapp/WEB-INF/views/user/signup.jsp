@@ -104,6 +104,7 @@
 				<button type="submit" class="btn btn-success"><i class="fa fa-user-plus"></i> Register</button>
 			</div>
 		</div>
+		<a href="/login">Already an User?Login Here!</a>
 	</form>
 </div>
 </body>

@@ -97,6 +97,10 @@
                         <div class="form-group">
                             <input class="input" type="tel" name="tel" placeholder="Telephone">
                         </div>
+                        <div class="form-group">
+                            <input class="btn btn-success" type="submit" name="tel"  value="Update">
+                        </div>
+
 
                         <c:if test="${roles=='USER'}">
                             <div class="form-group">
@@ -106,7 +110,7 @@
                                     <div class="caption">
                                         <p>Converting to seller account You will have a privilege to sell your item though E-shop
                                         <p>
-                                                <%--                                        <input class="input" type="email" name="email" placeholder="Enter Your email">--%>
+
                                             <a href="/seller/${user.id}" class="convert" >Convert to seller account</a>
                                     </div>
                                 </div>
@@ -126,6 +130,8 @@
                                 </div>
                             </div>
                         </c:if>
+
+
 
                     </div>
 
