@@ -2,8 +2,8 @@
 
 This is a full responsive E commerce web site.
 
-![HomePage](img/home1.jpg)
-![HomePage](img/home2.jpg)
+![HomePage](img/home1.JPG)
+![HomePage](img/home2.JPG)
 ![HomePage](img/review.JPG)
 
 
