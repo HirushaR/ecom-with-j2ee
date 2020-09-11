@@ -51,10 +51,12 @@
                             <c:if test="${roles.equals('SELLER')}">
                                 <li><a href="/profile/${user.id}"><i class="fa fa-user-o"></i> My  Account</a></li>
                                 <li><a href="/seller/addproduct"><i class="fa fa-user-o"></i> Add Product </a></li>
+                                <li><a href="/seller/myProduct"><i class="fa fa-user-o"></i> My Product </a></li>
                             </c:if>
                             <c:if test="${roles.equals('ADMIN')}">
                                 <li><a href="/profile/${user.id}"><i class="fa fa-user-o"></i> My  Account</a></li>
                                 <li><a href="/seller/addproduct"><i class="fa fa-user-o"></i> Add Product </a></li>
+                                <li><a href="/seller/myProduct"><i class="fa fa-user-o"></i> My Product </a></li>
                                 <li><a href="/admin/allUser"><i class="fa fa-user-o"></i> See All User </a></li>
                                 <li><a href="/admin/allProduct"><i class="fa fa-user-o"></i> See All Product </a></li>
                             </c:if>

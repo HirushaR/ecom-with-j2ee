@@ -104,6 +104,7 @@ public class UserController {
             model.addObject("user", new User());
             Cart cart = new Cart();
             cart.setUser(user);
+            cartRepository.save(cart);
             model.setViewName("user/signup");
         }
 

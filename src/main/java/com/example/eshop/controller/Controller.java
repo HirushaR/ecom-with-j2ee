@@ -19,16 +19,20 @@ public class Controller {
 
     //SELECT * from product where id = (SELECT product_id FROM prod_tag WHERE tag_id = (SELECT id FROM tags WHERE name ="iphone" ))
 
-    @Autowired
+
     private UserRepository userRepository;
-    @Autowired
     private CartRepository cartRepository;
-    @Autowired
     private CartProductRepository cartProductRepository;
 
+    @Autowired
+    public Controller(UserRepository userRepository, CartRepository cartRepository, CartProductRepository cartProductRepository) {
+        this.userRepository = userRepository;
+        this.cartRepository = cartRepository;
+        this.cartProductRepository = cartProductRepository;
+    }
 
 
-//    @RequestMapping("/get")
+    //    @RequestMapping("/get")
 //    public List<Product> sda()
 //    {
 //        User user = userRepository.findById(19);

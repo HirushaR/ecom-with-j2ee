@@ -82,7 +82,7 @@
                             <label for="cars">Choose a car:</label>
                             <select id="cars" name="category">
                                 <c:forEach items="${products}" var="product">
-                                    <option value="${product.category}">${product.category}</option>
+                                    <option value="${product.category.name}">${product.category.name}</option>
                                 </c:forEach>
 
 
