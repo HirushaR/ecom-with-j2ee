@@ -92,7 +92,7 @@ public class UserController {
     public ModelAndView createUser(@Valid User user, BindingResult bindingResult) {
         ModelAndView model = new ModelAndView();
         User userExists = userService.findUserByEmail(user.getEmail());
-
+        System.out.println(user.getPassword());
         if(userExists != null) {
             bindingResult.rejectValue("email", "error.user", "This email already exists!");
         }
